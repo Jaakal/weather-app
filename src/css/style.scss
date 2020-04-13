@@ -10,14 +10,15 @@
   font-style: normal;
 }
 
-body {
+.background {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('../images/restaurant.jpg');
+  background-image: url('../images/background-narrow.jpg');
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

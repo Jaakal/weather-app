@@ -1,11 +1,221 @@
-.third-headline {
-  margin-top: 20px;
-  font-size: 0.02 * 100vw;
-  background-color: rgba(128, 0, 0, 0.5);
+$initial-width: 30px;
+$initial-height: 30px;
+$full-width: 200px;
+$color: white;
+
+$animation-duration: 2s;
+
+@function time($percentage) {
+  @return $percentage * $animation-duration;
 }
 
-.fourth-headline {
+// App screen
+
+.app-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  max-height: 1200px;
+  width: 80%;
+  height: 80%;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background: inherit;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 200px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+  }
+}
+
+// Pin SVG
+
+.pin {
+  position: relative;
+  width: 30px;
+  height: 30px;
   margin-top: 20px;
-  font-size: 0.015 * 100vw;
-  background-color: rgba(59, 226, 25, 0.5);
+  background-image: url('../images/pin-thin.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// Search bar
+
+.search-bar-wrapper form {
+  position: absolute;
+  width: $full-width * 0.95;
+  opacity: 0;
+  transform: translateX(-5000px);
+
+  input {
+    width: 100%;
+    padding: 2px 23px 2px 0px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      padding-left: 2px;
+      color: white;
+      opacity: 1; /* Firefox */
+    }
+  }
+
+  .form-inner-wrapper {
+    position: relative;
+  }
+
+  .submit-button {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid white;
+    outline: none;
+    background: transparent;
+    transform: translateY(-50%);
+
+    span:nth-of-type(1) {
+      position: absolute;
+      top: 100% * 0.8535;
+      left: 100% * 0.8535;
+      width: 10px;
+      border-top: 1px solid white;
+      transform-origin: left;
+      transform: rotate(45deg);  
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.search-bar-wrapper {
+  position: relative;
+
+  > span:nth-of-type(1) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 60%;
+    border-left: 1px solid $color;
+    opacity: 0;
+    transform-origin: bottom;
+    animation: slide-rotate-in time(0.25) linear forwards;
+    transition: opacity 0s linear time(0.375);
+  }
+  
+  > span:nth-of-type(2) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid $color;
+    opacity: 0;
+    transition: opacity 0s linear time(0.375), transform time(0.125) linear;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-bar {
+  position: relative;
+  width: $initial-width;
+  height: $initial-height;
+  border: 1px solid $color;
+  border-radius: 50%;
+  opacity: 1;
+  transition: border-radius time(0.25) linear time(0.375), opacity time(0.25) linear time(0.25);
+  
+  span:nth-of-type(1) {
+    position: absolute;
+    top: 100% * 0.8535;
+    left: 100% * 0.8535;
+    width: $initial-width * 0.7;
+    border-top: 1px solid $color;
+    transform-origin: left;
+    transform: rotate(45deg);  
+    transition: transform time(0.25) linear time(0.55);
+  }
+}
+
+.search-bar-wrapper.active {
+  > span:nth-of-type(1) {
+    opacity: 1;
+    transform-origin: bottom;
+    animation: slide-rotate-out time(0.25) linear time(0.525) forwards;
+    transition: opacity 0s linear time(0.375);
+  }
+  
+  > span:nth-of-type(2) {
+    opacity: 1;
+    transform: scaleX($full-width / $initial-width);
+    transition: opacity 0s linear time(0.375), transform time(0.125) linear time(0.65);
+  }
+
+  .search-bar {
+    border-radius: 0;
+    opacity: 0;
+    transition: border-radius time(0.25) linear time(0.2), opacity time(0.175) linear time(0.35);
+    
+    span:nth-of-type(1) {
+      opacity: 0;
+      transform: rotate(45deg) scaleX(0);
+      transition: transform time(0.25) linear, opacity 0s time(0.2);
+    }
+  }
+
+  form {
+    opacity: 1;
+    transform: translate(calc(-50% + calc(#{$initial-width} * 0.5)), calc(-50% + calc(#{$initial-height} * 0.5)));
+    transition: transform 0s time(0.8), opacity time(0.25) ease time(0.8);
+  }
+}
+
+@keyframes slide-rotate-out {
+  0%   {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50%  {
+    transform: translateX(0) rotate(-30deg);
+  }
+
+  100% {
+    transform: translateX(-($full-width - $initial-width) / 2) rotate(-30deg);
+  }
+}
+
+@keyframes slide-rotate-in {
+  0%   {
+    transform: translateX(-($full-width - $initial-width) / 2) rotate(-30deg);
+  }
+  
+  50%  {
+    transform: translateX(0) rotate(-30deg);
+  }
+  
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
 }
