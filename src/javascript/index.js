@@ -8,9 +8,11 @@ import '../css/index.scss';
  * will be added before the main stylesheets.
  * * */
 
-import $ from 'jquery';
-import 'regenerator-runtime/runtime';
-
+ /* eslint-disable import/no-unresolved */
+ import $ from 'jquery';
+ import 'regenerator-runtime/runtime';
+ /* eslint-enable import/no-unresolved */
+ 
 import BindEvents from './event-handlers';
 
 $(document).ready(() => {

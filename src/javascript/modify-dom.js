@@ -1,4 +1,6 @@
+/* eslint-disable import/no-unresolved */
 import $ from 'jquery';
+/* eslint-enable import/no-unresolved */
 
 import Time from './time';
 import capitalizeFirstLetter from './utility-functions';

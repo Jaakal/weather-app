@@ -1,4 +1,6 @@
+/* eslint-disable import/no-unresolved */
 import $ from 'jquery';
+/* eslint-enable import/no-unresolved */
 
 import ModifyDOM from './modify-dom';
 import Weather from './weather';
