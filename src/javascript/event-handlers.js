@@ -5,7 +5,7 @@ import Weather from './weather';
 
 const BindEvents = (() => {
   let data;
-  
+
   $('.unit-toggler span').click(() => {
     $('.unit-toggler span').toggleClass('slide-right');
 
@@ -23,12 +23,12 @@ const BindEvents = (() => {
       $('.search-input').focus();
     });
   });
-  
+
   $('.input-form').submit(async (event) => {
     event.preventDefault();
-    
+
     const location = $('.input-form').serializeArray()[0].value;
-    
+
     try {
       data = await Weather.getWeatherData(location);
 
@@ -38,6 +38,6 @@ const BindEvents = (() => {
       $('.error').addClass('display-error');
     }
   });
-})
+});
 
 export default BindEvents;

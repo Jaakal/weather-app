@@ -23,8 +23,8 @@ const Time = (() => {
     } else if (minutes < 0) {
       minutes += 60;
       hours -= 1;
-    } 
-    
+    }
+
     if (hours >= 24) {
       hours -= 24;
       weekDay += 1;
@@ -40,7 +40,7 @@ const Time = (() => {
       weekDay += 7;
       monthDay -= 1;
     }
-    
+
     if (monthDay > daysInAMonth[month]) {
       monthDay -= daysInAMonth[month];
       month += 1;
@@ -58,7 +58,7 @@ const Time = (() => {
     }
 
     return `${weekDays[weekDay]}, ${monthDay} ${months[month]} ${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-  }
+  };
 
   return { getLocationTime };
 })();

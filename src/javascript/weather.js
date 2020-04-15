@@ -3,10 +3,11 @@ const Weather = (() => {
     const weatherApiKey = '805c97446a2d8c166cc7b33df92b0b3f';
     const units = ['metric', 'imperial'];
     const responseArray = [];
-  
+
+    /* eslint-disable no-await-in-loop */
     for (let i = 0; i < units.length; i += 1) {
       const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherApiKey}&units=${units[i]}`);
-  
+
       switch (response.status) {
         case 200:
           responseArray.push(await response.json());
@@ -21,11 +22,12 @@ const Weather = (() => {
           throw new Error('Maintenance needed, contact the owner!');
       }
     }
-  
-    return responseArray;
-  } 
+    /* eslint-enable no-await-in-loop */
 
-  return { getWeatherData }
+    return responseArray;
+  };
+
+  return { getWeatherData };
 })();
 
 export default Weather;
