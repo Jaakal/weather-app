@@ -1,10 +1,10 @@
-# Webpack Template
+# Weather App
 
-Project template for using Webpack as the bundler for a project. Set up with Babel-, SCSS/CSS-, image- and font-loaders. jQuery module is added as well and included globally. I'm using jQuery function `$(document).ready(() => {})` in different modules do describe, in which order the final bundle is composed to together, because that function is executed in multiple bindings in the order it was attached.
+Project, which displays current weather temperature, daily max and min temperature, how it actually feels and current time of the searched location. Data is fetched from [OpenWeather](https://openweathermap.org/) website. For calculating current time, I use OpenWeather provided offset related to the UTC. 
 
 ## Screenshot
 
-![Screenshot of the webpage](https://github.com/Jaakal/webpack-template/blob/master/src/images/screenshot.png)
+![Screenshot of the webpage](https://github.com/Jaakal/weather-app/blob/milestone1/src/images/screenshot.gif)
 
 ## Getting Started
 
