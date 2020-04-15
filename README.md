@@ -1,6 +1,6 @@
 # Weather App
 
-Project, which displays current weather temperature, daily max and min temperature, how it actually feels and current time of the searched location. Data is fetched from [OpenWeather](https://openweathermap.org/) website. For calculating current time, I use OpenWeather provided offset related to the UTC. 
+Project, which displays current weather temperature, daily maximum and minimum temperature, how it actually feels and current time of the searched location. Data is fetched from [OpenWeather](https://openweathermap.org/) website. For calculating current time, I use OpenWeather provided offset related to the UTC. 
 
 ## Screenshot
 
@@ -120,6 +120,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 * Article [How to configure Webpack 4 from scratch for a basic website](https://dev.to/pixelgoo/how-to-configure-webpack-from-scratch-for-a-basic-website-46a5) used as a reference.
-* Video tutorial in [Youtube](https://www.youtube.com/watch?v=ytRnPV0kRN0) used as a reference.
-* Font [Lobster](https://fonts.google.com/specimen/Lobster) used for the main headline.
-* Link to the [background image](https://unsplash.com/photos/nmpW_WwwVSc).
+* Video tutorial in [Youtube](https://www.youtube.com/watch?v=ytRnPV0kRN0) used as a reference to create Webpack template.
+* Font [Quicksand](https://fonts.google.com/specimen/Quicksand).
+* Link to the [background image](https://unsplash.com/photos/3qucB7U2l7I).
