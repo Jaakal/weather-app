@@ -71,27 +71,41 @@ const getLocationTime = (offset) => {
   if (minutes >= 60) {
     minutes -= 60;
     hours += 1;
+  } else if (minutes < 0) {
+    minutes += 60;
+    hours -= 1;
   } 
   
   if (hours >= 24) {
     hours -= 24;
     weekDay += 1;
+  } else if (hours < 0) {
+    hours += 24;
+    weekDay -= 1;
+  }
 
-    if (weekDay >= 7) {
-      weekDay -= 7;
-    }
-
+  if (weekDay >= 7) {
+    weekDay -= 7;
     monthDay += 1;
-    
-    if (monthDay > daysInAMonth[month]) {
-      monthDay -= daysInAMonth[month];
-      month += 1;
+  } else if (weekDay < 0) {
+    weekDay += 7;
+    monthDay -= 1;
+  }
+  
+  if (monthDay > daysInAMonth[month]) {
+    monthDay -= daysInAMonth[month];
+    month += 1;
+  } else if (monthDay < 0) {
+    monthDay = daysInAMonth[month - 1];
+    month -= 1;
+  }
 
-      if (month >= 12) {
-        year += 1;
-        month -= 12;
-      }
-    }
+  if (month >= 12) {
+    year += 1;
+    month -= 12;
+  } else if (month < 0) {
+    year -= 1;
+    month = 11;
   }
 
   return `${weekDays[weekDay]}, ${monthDay} ${months[month]} ${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
