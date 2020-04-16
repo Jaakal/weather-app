@@ -1,0 +1,47 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "Project, which displays current weather temperature, daily maximum and minimum temperature, how it actually feels and current time of the searched location. Data is fetched from [OpenWeather](https://openweathermap.org/) website. For calculating current time, I use OpenWeather provided offset related to the UTC.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p"
+  },
+  "keywords": [],
+  "author": "Jaak Kivinukk",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "file-loader": "^6.0.0",
+    "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaakal/weather-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jaakal/weather-app/issues"
+  },
+  "homepage": "https://github.com/Jaakal/weather-app#readme"
+}

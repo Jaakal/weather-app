@@ -1,0 +1,442 @@
+$initial-width: 30px;
+$initial-height: 30px;
+$full-width: 200px;
+$color: white;
+
+$animation-duration: 2s;
+
+@function time($percentage) {
+  @return $percentage * $animation-duration;
+}
+
+// App screen
+
+.app-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  max-height: 1200px;
+  width: 80%;
+  height: 80%;
+  min-height: 400px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background: inherit;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 200px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+  }
+}
+
+// Overall
+
+.logo {
+  position: relative;
+  margin-top: 30px;
+  font-size:calc(20px + 0.8vw);
+  color: $color;
+}
+
+.separator {
+  flex-grow: 1;
+}
+
+.search-result-wrapper {
+  height: 0;
+  opacity: 0;
+  transition: height 1s ease, opacity 0.4s ease 0.8s; 
+  will-change: transform, opacity;
+}
+
+.search-result-inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location {
+  position: relative;
+  margin-top: 10px;
+  font-size:calc(12px + 0.6vw);
+  color: $color;
+}
+
+.date-and-time {
+  position: relative;
+  margin-top: 10px;
+  font-size:calc(10px + 0.5vw);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.current-temperature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 30px 0 15px 0;
+  transform: translateX(-12px);
+  
+  .icon {
+    display: none;
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon[src] {
+    display: block;
+  }
+
+  .degrees {
+    position: relative;
+    font-size:calc(30px + 1vw);
+    color: $color;
+
+    span:nth-of-type(2) {
+      position: absolute;
+      font-size:calc(15px + 1vw);
+      top: 4px;
+    }
+  }
+}
+
+.temperature-info {
+  position: relative;
+  font-size:calc(10px + 0.5vw);
+  color: $color;
+
+  span:nth-of-type(1) {
+    height: 100%;
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+  }
+}
+
+.description {
+  position: relative;
+  margin-top: 30px;
+  font-size:calc(12px + 0.8vw);
+  color: $color;
+}
+
+// Unit toggler
+
+.unit-toggler-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 20px 0 30px 0;
+}
+
+.unit-toggler {
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+  margin: 0 5px;
+  background: inherit;
+  border-radius: 50px;
+  box-shadow: inset 0 0 200px rgba(255, 255, 255, .5),
+                    0 0 10px rgba(0, 0, 0, 0.2);
+
+  span {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $color;
+    transition: transform 0.3s ease;
+    will-change: transform;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.slide-right {
+  transform: translateX(16px);
+}
+
+// Error popup
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 20px 40px;
+  background: inherit;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: red;
+  z-index: 9999;
+  transform: translateX(-5000px);
+
+  .error-message {
+    z-index: 99999;
+  }
+  
+  .close-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    z-index: 99999;
+    color: $color;
+
+    span:nth-of-type(1) {
+      position: absolute;
+      width: 100%;
+      border-top: 1px solid $color;
+      transform: rotate(-45deg);
+    }
+    
+    span:nth-of-type(2) {
+      position: absolute;
+      width: 100%;
+      border-top: 1px solid $color;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 200px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+  }
+}
+
+.display-error {
+  transform: translateX(0);
+}
+
+// Pin SVG
+
+.pin {
+  position: relative;
+  width: 30px;
+  padding-bottom: 30px;
+  margin-top: 20px;
+  background-image: url('../images/pin-thin.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// Search bar
+
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  > span:nth-of-type(1) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 60%;
+    border-left: 1px solid $color;
+    opacity: 0;
+    transform-origin: bottom;
+    animation: slide-rotate-in time(0.25) linear forwards;
+    transition: opacity 0s linear time(0.375);
+    will-change: transform, opacity;
+  }
+  
+  > span:nth-of-type(2) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $initial-width;
+    border-bottom: 1px solid $color;
+    opacity: 0;
+    transition: opacity 0s linear time(0.375), transform time(0.125) linear;
+    will-change: transform, opacity;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-label {
+  position: relative;
+  width: 80px;
+  margin-right: 8px;
+  font-size: 20px;
+  opacity: 1;
+  transition: opacity 1s ease, width time(0.125) linear time(0.65);
+  will-change: opacity, width;
+}
+
+.search-bar-wrapper form {
+  position: absolute;
+  width: $full-width * 0.95;
+  opacity: 0;
+  transform: translateX(-5000px);
+
+  input {
+    width: 100%;
+    padding: 2px 23px 2px 0px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: $color;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      padding-left: 2px;
+      color: $color;
+      opacity: 1; /* Firefox */
+    }
+  }
+
+  .form-inner-wrapper {
+    position: relative;
+  }
+
+  .submit-button {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid $color;
+    outline: none;
+    background: transparent;
+    transform: translateY(-50%);
+
+    span:nth-of-type(1) {
+      position: absolute;
+      top: 100% * 0.8535;
+      left: 100% * 0.8535;
+      width: 10px;
+      border-top: 1px solid $color;
+      transform-origin: left;
+      transform: rotate(45deg);  
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.search-bar {
+  position: relative;
+  width: $initial-width;
+  height: $initial-height;
+  border: 1px solid $color;
+  border-radius: 50%;
+  opacity: 1;
+  transition: border-radius time(0.25) linear time(0.375), opacity time(0.25) linear time(0.25);
+  will-change: border-radius, opacity;
+  
+  span:nth-of-type(1) {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: $initial-width * 0.7;
+    border-top: 1px solid $color;
+    transform-origin: left;
+    transform: rotate(45deg);  
+    transition: transform time(0.25) linear time(0.55);
+    will-change: transform;
+  }
+}
+
+.search-bar-wrapper.active {
+  .search-label {
+    opacity: 0;
+    width: 0;
+  }
+
+  > span:nth-of-type(1) {
+    opacity: 1;
+    transform-origin: bottom;
+    animation: slide-rotate-out time(0.25) linear time(0.525) forwards;
+    transition: opacity 0s linear time(0.375);
+    will-change: opacity;
+  }
+  
+  > span:nth-of-type(2) {
+    opacity: 1;
+    transform: scaleX($full-width / $initial-width);
+    transition: opacity 0s linear time(0.375), transform time(0.125) linear time(0.65);
+    will-change: opacity, transform;
+  }
+  
+  .search-bar {
+    border-radius: 0;
+    opacity: 0;
+    transition: border-radius time(0.25) linear time(0.2), opacity time(0.175) linear time(0.35);
+    will-change: border-radius, opacity;
+    
+    span:nth-of-type(1) {
+      opacity: 0;
+      transform: rotate(45deg) scaleX(0);
+      transition: transform time(0.25) linear, opacity 0s time(0.2);
+      will-change: transform, opacity;
+    }
+  }
+  
+  form {
+    opacity: 1;
+    z-index: 333;
+    transform: translate(calc(-50% + calc(#{$initial-width} * 0.5)), calc(-50% + 10px));
+    transition: transform 0s time(0.8), opacity time(0.25) ease time(0.8);
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes slide-rotate-out {
+  0%   {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50%  {
+    transform: translateX(0) rotate(-30deg);
+  }
+
+  100% {
+    transform: translateX(-($full-width - $initial-width) / 2) rotate(-30deg);
+  }
+}
+
+@keyframes slide-rotate-in {
+  0%   {
+    transform: translateX(-($full-width - $initial-width) / 2) rotate(-30deg);
+  }
+  
+  50%  {
+    transform: translateX(0) rotate(-30deg);
+  }
+  
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
