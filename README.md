@@ -2,6 +2,8 @@
 
 Project, which displays current weather temperature, daily maximum and minimum temperature, how it actually feels and current time of the searched location. Data is fetched from [OpenWeather](https://openweathermap.org/) website. For calculating current time, I use OpenWeather provided offset related to the UTC. 
 
+Link to [live version](https://jaak-weather-app.herokuapp.com/).
+
 ## Screenshot
 
 ![Screenshot of the webpage](https://github.com/Jaakal/weather-app/blob/milestone1/src/images/screenshot.gif)
