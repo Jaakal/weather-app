@@ -33,7 +33,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "regenerator-runtime": "^0.13.5"
   },
   "repository": {
